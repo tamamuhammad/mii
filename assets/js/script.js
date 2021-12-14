@@ -2,7 +2,7 @@ $(function () {
 	$('.tambah').on('click', function () {
 		$('#addNewModal').html('Add New Modal');
 		$('.modal-footer button[type=submit]').html('Add Menu');
-		$('.modal-body form').attr('action', '/bkksa/menu/');
+		$('.modal-body form').attr('action', '/mii/menu/');
 
 		$('#id').val();
 		$('#menu').val();
@@ -13,10 +13,10 @@ $(function () {
 		$('.modal-footer button[type=submit]').html('Edit Menu');
 
 		const id = $(this).data('id');
-		$('.modal-body form').attr('action', '/bkksa/menu/edit/' + id);
+		$('.modal-body form').attr('action', '/mii/menu/edit/' + id);
 
 		$.ajax({
-			url: '/bkksa/menu/getedit',
+			url: '/mii/menu/getedit',
 			data: {
 				id,
 				id
@@ -32,7 +32,7 @@ $(function () {
 	$('.tambahsm').on('click', function () {
 		$('#addNewSubModal').html('Add New Sub Menu');
 		$('.modal-footer button[type=submit]').html('Add Submenu');
-		$('.modal-body form').attr('action', '/bkksa/menu/submenu');
+		$('.modal-body form').attr('action', '/mii/menu/submenu');
 
 		$('#id').val();
 		$('#submenu').val();
@@ -47,10 +47,10 @@ $(function () {
 		$('.modal-footer button[type=submit]').html('Edit Submenu');
 
 		const id = $(this).data('id');
-		$('.modal-body form').attr('action', '/bkksa/menu/editsm/' + id);
+		$('.modal-body form').attr('action', '/mii/menu/editsm/' + id);
 
 		$.ajax({
-			url: '/bkksa/menu/geteditsm',
+			url: '/mii/menu/geteditsm',
 			data: {
 				id,
 				id
@@ -70,7 +70,7 @@ $(function () {
 	$('.tR').on('click', function () {
 		$('#addNewRole').html('Tambah Role Baru');
 		$('.modal-footer button[type=submit]').html('Tambah Role');
-		$('.modal-body form').attr('action', '/bkksa/admin/tambahRole');
+		$('.modal-body form').attr('action', '/mii/admin/tambahRole');
 
 		$('#id').val();
 		$('#role').val();
@@ -81,10 +81,10 @@ $(function () {
 		$('.modal-footer button[type=submit]').html('Edit Role');
 
 		const id = $(this).data('id');
-		$('.modal-body form').attr('action', '/bkksa/admin/editRole/' + id);
+		$('.modal-body form').attr('action', '/mii/admin/editRole/' + id);
 
 		$.ajax({
-			url: '/bkksa/admin/ambilrole',
+			url: '/mii/admin/ambilrole',
 			data: {
 				id,
 				id
@@ -107,7 +107,7 @@ $(function () {
 		const menuId = $(this).data('menu');
 
 		$.ajax({
-			url: "/bkksa/admin/changeAccess",
+			url: "/mii/admin/changeAccess",
 			method: 'post',
 			data: {
 				roleId: roleId,

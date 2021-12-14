@@ -5,11 +5,11 @@
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
+                    <div class="col-md-6">
                         <h1 class="m-0 text-dark">Submenu Management</h1>
                     </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
+                    <div class="col-md-6">
+                        <ol class="breadcrumb float-md-right">
                             <li class="breadcrumb-item"><a href="<?= base_url('menu') ?>">Menu Management</a></li>
                             <li class="breadcrumb-item active"><a href="<?= base_url('menu/submenu') ?>">Submenu Management</a></li>
                         </ol>
@@ -21,13 +21,14 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-sm-10">
+                <div class="col-md-10">
                     <?php if (validation_errors()) : ?>
                         <div class="alert alert-danger" role="alert"><?= validation_errors(); ?></div>
                     <?php endif; ?>
                     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>" data-data="Submenu"></div>
+                    <?php $this->session->unset_userdata('message'); ?>
                     <a href="" class="btn btn-info mb-3 tambahsm" data-toggle="modal" data-target="#addSubModal">Add New Submenu</a>
-                    <table class="table table-hover">
+                    <table class="table table-hover table-responsive">
                         <thead>
                             <th scope="col">#</th>
                             <th scope="col">Submenu</th>

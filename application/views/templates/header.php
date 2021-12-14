@@ -33,21 +33,24 @@
             padding-bottom: 0px;
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 690px) {
             .barResponsive {
                 margin-top: 0 !important;
+            }
+
+            small.user-name {
+                display: none;
             }
         }
 
         .linknav:hover {
             background-color: #34805e;
-            border-radius: 5px;
+            height: 50px !important;
         }
 
         .active {
             background-color: #f4f6f9;
             color: #425931 !important;
-            border-radius: 5px;
             height: 60px !important;
         }
 

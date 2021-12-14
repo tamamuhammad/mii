@@ -3,14 +3,14 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Detail <?= $alumni['nama_alumni'] ?></h1>
+                <div class="col-md-6">
+                    <h1 class="m-0 text-dark">Detail <?= $alumni['nama'] ?></h1>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                <div class="col-md-6">
+                    <ol class="breadcrumb float-md-right">
                         <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="<?= base_url('dashboard/table') ?>">Table Data Alumni</a></li>
-                        <li class="breadcrumb-item active"><a href="<?= base_url('dashboard/table/detail') . $alumni['id'] ?>">Detail <?= $alumni['nama_alumni'] ?></a></li>
+                        <li class="breadcrumb-item active"><a href="<?= base_url('dashboard/table/detail') . $alumni['id'] ?>">Detail <?= $alumni['nama'] ?></a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -23,91 +23,71 @@
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle" src="<?= base_url('assets/img/') . $alumni['upload_foto'] ?>" alt="User profile picture">
+                            <h3 class="profile-username text-center"><?= $alumni['nama'] ?></h3>
                         </div>
-                        <h3 class="profile-username text-center"><?= $alumni['nama_alumni'] ?></h3>
 
-                        <p class="text-muted text-center"><?= $alumni['jurusan'] ?></p>
+                        <p class="text-muted text-center"><?= $alumni['nis'] ?></p>
 
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
-                                <b>Jenis Kelamin</b> <a class="float-right"><?= $alumni['jenis_kelamin'] ?></a>
+                                <b>Jenis Kelamin</b> <a class="float-right"><?= $alumni['jns_kel'] ?></a>
                             </li>
                             <li class="list-group-item">
-                                <b>Tahun Lulus</b> <a class="float-right"><?= $alumni['tahun_lulus'] ?></a>
+                                <b>Tahun Lulus</b> <a class="float-right"><?= $alumni['tahun_keluar'] ?></a>
                             </li>
                             <li class="list-group-item">
-                                <b>Tanggal Daftar</b> <a class="float-right"><?= $alumni['tanggal_daftar'] ?></a>
+                                <b>Tanggal Input</b> <a class="float-right"><?= $alumni['tgl_input'] ?></a>
                             </li>
                         </ul>
+                        <a class="btn btn-secondary float-right" href="<?= base_url('dashboard/table') ?>">Kembali</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header p-2">
-                        <ul class="nav nav-pills">
-                            <li class="nav-item"><a class="nav-link active" href="#tentang" data-toggle="tab">Tentang</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#smksa" data-toggle="tab">SMK SA</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#lulus" data-toggle="tab">Pasca Lulus</a></li>
-                        </ul>
+                    <div class="card-header p-3">
+                        <strong>Detail Alumni</strong>
                     </div><!-- /.card-header -->
                     <div class="card-body">
-                        <div class="tab-content">
-                            <div class="active tab-pane" id="tentang">
-                                <!-- Post -->
-                                <strong><i class="fab fa-facebook mr-1"></i> Social Media</strong>
+                        <!-- Post -->
+                        <strong>Tempat, Tanggal Lahir</strong>
 
-                                <p class="text-muted">
-                                    <?= $alumni['sosmed'] ?>
-                                </p>
+                        <p class="text-muted">
+                            <?= $alumni['tempat_lahir'] ?>, <?= $alumni['tgl_lahir'] ?>
+                        </p>
 
-                                <hr>
+                        <hr>
 
-                                <strong><i class="fas fa-map-marker-alt mr-1"></i> Alamat</strong>
+                        <strong>Alamat</strong>
 
-                                <p class="text-muted"><?= $alumni['alamat'] ?></p>
+                        <p class="text-muted"><?= $alumni['alamat'] ?></p>
 
-                                <hr>
+                        <hr>
 
-                                <strong><i class="fas fa-phone mr-1"></i> No. Telepon</strong>
+                        <strong>Nama Ayah</strong>
 
-                                <p class="text-muted">
-                                    <?= $alumni['no_telp'] ?>
-                                </p>
-                            </div>
-                            <!-- /.tab-pane -->
-                            <div class="tab-pane" id="smksa">
-                                <strong><i class="fas fa-envelope-open-text mr-1"></i> Saran SMKSA</strong>
+                        <p class="text-muted">
+                            <?= $alumni['nama_ayah'] ?>
+                        </p>
+                        <hr>
 
-                                <p class="text-muted">
-                                    <?= $alumni['saran_smksa'] ?>
-                                </p>
+                        <strong>Nama Ibu</strong>
 
-                                <hr>
+                        <p class="text-muted">
+                            <?= $alumni['nama_ibu'] ?>
+                        </p>
+                        <hr>
 
-                                <strong><i class="fas fa-star mr-1"></i> Rating SMKSA</strong>
+                        <strong>Tahun Masuk</strong>
 
-                                <p class="text-muted"><?= $alumni['rating_smksa'] ?></p>
-                            </div>
-                            <!-- /.tab-pane -->
+                        <p class="text-muted">
+                            <?= $alumni['tahun_masuk'] ?>
+                        </p>
+                        <hr>
 
-                            <div class="tab-pane" id="lulus">
-                                <strong><i class="fas fa-briefcase mr-1"></i> Kegiatan Setelah Lulus</strong>
+                        <strong>Link Berkas</strong>
 
-                                <p class="text-muted">
-                                    <?= $alumni['keg_set_lulus'] ?>
-                                </p>
-
-                                <hr>
-
-                                <strong><i class="fas fa-building mr-1"></i> Nama Industri atau Akademi</strong>
-
-                                <p class="text-muted"><?= $alumni['nama_industry'] ?></p>
-                            </div>
-                            <!-- /.tab-pane -->
-                        </div>
-                        <!-- /.tab-content -->
+                        <a href="<?= $alumni['link_berkas'] ?>" class="btn btn-info float-right">Download Berkas</a>
                     </div>
                 </div>
             </div>

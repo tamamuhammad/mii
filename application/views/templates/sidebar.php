@@ -2,8 +2,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?= base_url('dashboard') ?>" class="brand-link py-3 text-center d-inline-flex bg-lightblue w-100" style="padding-left: 12px">
-        <img src="<?= base_url('assets/img/SA.png') ?>" width="50px" height="50px">
-        <p class="pl-3 text-bold" style="padding-top: 12px">ALUMNI SMKSA</p>
+        <img src="<?= base_url('assets/img/sekolah.png') ?>" width="48px" height="48px">
+        <p class="pl-1 text-bold" style="padding-top: 12px">MII BANYUURIP 01</p>
     </a>
 
     <!-- Sidebar -->

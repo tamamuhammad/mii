@@ -2,8 +2,7 @@
     <div class="float-right d-none d-sm-block">
         by <b>Muhammad M. T.</b>
     </div>
-    <strong>Copyright &copy; <?= date('Y'); ?> <a href="http://ponpes-smksa.sch.id">SMK Syafi'i Akrom</a>.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; <?= date('Y'); ?> <a href="http://ponpes-smksa.sch.id">SMK Syafi'i Akrom</a>.</strong> All rights reserved.
 </footer>
 
 <!-- Control Sidebar -->
@@ -18,121 +17,44 @@
 <script src="<?= base_url('assets/'); ?>plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="<?= base_url('assets/'); ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- <script src="<?= base_url('assets/') ?>plugins/datatables/jquery.dataTables.js"></script>
-<script src="<?= base_url('assets/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script> -->
 <!-- AdminLTE App -->
 <script src="<?= base_url('assets/'); ?>js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url('assets/') ?>plugins/sweetalert2/sweetalert2.all.min.js"></script>
-<script src="<?= base_url('assets/'); ?>js/demo.js"></script>
+<script src="<?= base_url('assets/') ?>plugins/datatables/jquery.dataTables.min copy.js"></script>
+<script src="<?= base_url('assets/') ?>plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
 <script src="<?= base_url('assets/'); ?>js/script.js"></script>
 <script src="<?= base_url('assets/') ?>plugins/chart.js/Chart.js"></script>
 <script src="<?= base_url('assets/') ?>plugins/summernote/summernote-bs4.min.js"></script>
 <script>
     $(function() {
+        $('.read1').on('click', function() {
+            $('.ringkas1').addClass('d-none')
+            $('.panjang1').removeClass('d-none')
+        })
+
+        $('.short1').on('click', function() {
+            $('.panjang1').addClass('d-none')
+            $('.ringkas1').removeClass('d-none')
+        })
+
+        $('.read2').on('click', function() {
+            $('.ringkas2').addClass('d-none')
+            $('.panjang2').removeClass('d-none')
+        })
+
+        $('.short2').on('click', function() {
+            $('.panjang2').addClass('d-none')
+            $('.ringkas2').removeClass('d-none')
+        })
         // Summernote
+        $('#dataTable').DataTable();
         $('.textarea').summernote();
-
-        var ctx = document.getElementById("barChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ["TKJ", "RPL", "TB", "TKRO", "TBSM"],
-                datasets: [{
-                    label: '',
-                    data: [
-                        <?php
-                        $jumlah_tkj = $this->db->get_where('alumni', ['jurusan' => 'Teknik Komputer dan Jaringan'])->num_rows();
-                        echo $jumlah_tkj;
-                        ?>,
-                        <?php
-                        $jumlah_rpl = $this->db->get_where('alumni', ['jurusan' => 'Rekayasa Perangkat Lunak'])->num_rows();
-                        echo $jumlah_rpl;
-                        ?>,
-                        <?php
-                        $jumlah_tb = $this->db->get_where('alumni', ['jurusan' => 'Tata Busana'])->num_rows();
-                        echo $jumlah_tb;
-                        ?>,
-                        <?php
-                        $jumlah_tkro = $this->db->get_where('alumni', ['jurusan' => 'Teknik Kendaraan Ringan Otomotif'])->num_rows();
-                        echo $jumlah_tkro;
-                        ?>,
-                        <?php
-                        $jumlah_tbsm = $this->db->get_where('alumni', ['jurusan' => 'Teknik Bisnis Sepeda Motor'])->num_rows();
-                        echo $jumlah_tbsm;
-                        ?>
-                    ],
-                    backgroundColor: [
-                        'rgb(75, 192, 192)',
-                        'rgb(255, 99, 132)',
-                        'rgb(255, 206, 86)',
-                        'rgb(54, 162, 235)',
-                        'rgb(40, 167, 69)'
-                    ]
-                }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                responsive: true,
-                legend: {
-                    display: false
-                },
-                scales: {
-                    xAxes: [{
-                        gridLines: {
-                            display: false,
-                        }
-                    }],
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        })
-
-        var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
-        var donutChart = new Chart(donutChartCanvas, {
-            type: 'doughnut',
-            data: {
-                labels: ["Bekerja", "Kuliah", "Wirausaha", "Belum Kerja"],
-                datasets: [{
-                    label: '',
-                    data: [
-                        <?php
-                        $bekerja = $this->db->get_where('alumni', ['keg_set_lulus' => 'Bekerja'])->num_rows();
-                        echo $bekerja;
-                        ?>,
-                        <?php
-                        $kuliah = $this->db->get_where('alumni', ['keg_set_lulus' => 'Kuliah'])->num_rows();
-                        echo $kuliah;
-                        ?>,
-                        <?php
-                        $wirausaha = $this->db->get_where('alumni', ['keg_set_lulus' => 'Wirausaha'])->num_rows();
-                        echo $wirausaha;
-                        ?>,
-                        <?php
-                        $pengangguran = $this->db->get_where('alumni', ['keg_set_lulus' => 'Belum Kerja'])->num_rows();
-                        echo $pengangguran;
-                        ?>
-                    ],
-                    backgroundColor: [
-                        'rgb(216, 27, 96)',
-                        'rgb(32, 201, 151)',
-                        'rgb(253, 126, 20)',
-                        'rgb(108, 117, 125)'
-                    ]
-                }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                responsive: true,
-            }
-        })
-        var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
+        var areaChartCanvas = $('#areaChart').get(0).getContext('2d');
+        var date = new Date();
         var areaChartData = {
-            labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021'],
+            labels: [date.getFullYear() - 6, date.getFullYear() - 5, date.getFullYear() - 4, date.getFullYear() - 3, date.getFullYear() - 2, date.getFullYear() - 1, date.getFullYear()],
             datasets: [{
                 label: 'Jumlah Alumni',
                 backgroundColor: 'rgba(60,141,188,0.9)',
@@ -144,35 +66,35 @@
                 pointHighlightStroke: 'rgba(60,141,188,1)',
                 data: [
                     <?php
-                    $satu = $this->db->get_where('alumni', ['tahun_lulus' => '2015'])->num_rows();
+                    $satu = $this->db->get_where('alumni', ['tahun_keluar' => date('Y') - 6])->num_rows();
                     echo $satu;
                     ?>,
                     <?php
-                    $dua = $this->db->get_where('alumni', ['tahun_lulus' => '2016'])->num_rows();
+                    $dua = $this->db->get_where('alumni', ['tahun_keluar' => date('Y') - 5])->num_rows();
                     echo $dua;
                     ?>,
                     <?php
-                    $tiga = $this->db->get_where('alumni', ['tahun_lulus' => '2017'])->num_rows();
+                    $tiga = $this->db->get_where('alumni', ['tahun_keluar' => date('Y') - 4])->num_rows();
                     echo $tiga;
                     ?>,
                     <?php
-                    $empat = $this->db->get_where('alumni', ['tahun_lulus' => '2018'])->num_rows();
+                    $empat = $this->db->get_where('alumni', ['tahun_keluar' => date('Y') - 3])->num_rows();
                     echo $empat;
                     ?>,
                     <?php
-                    $lima = $this->db->get_where('alumni', ['tahun_lulus' => '2019'])->num_rows();
+                    $lima = $this->db->get_where('alumni', ['tahun_keluar' => date('Y') - 2])->num_rows();
                     echo $lima;
                     ?>,
                     <?php
-                    $enam = $this->db->get_where('alumni', ['tahun_lulus' => '2020'])->num_rows();
+                    $enam = $this->db->get_where('alumni', ['tahun_keluar' => date('Y') - 1])->num_rows();
                     echo $enam;
                     ?>,
                     <?php
-                    $tujuh = $this->db->get_where('alumni', ['tahun_lulus' => '2021'])->num_rows();
+                    $tujuh = $this->db->get_where('alumni', ['tahun_keluar' => date('Y')])->num_rows();
                     echo $tujuh;
                     ?>
                 ]
-            }, ]
+            }]
         }
         var areaChartOptions = {
             maintainAspectRatio: false,
@@ -198,7 +120,7 @@
             type: 'line',
             data: areaChartData,
             options: areaChartOptions
-        })
+        });
 
         var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
         var pieData = {
@@ -207,11 +129,11 @@
                 label: '',
                 data: [
                     <?php
-                    $cowo = $this->db->get_where('alumni', ['jenis_kelamin' => 'Laki-Laki'])->num_rows();
+                    $cowo = $this->db->get_where('alumni', ['jns_kel' => 'Laki-Laki'])->num_rows();
                     echo $cowo;
                     ?>,
                     <?php
-                    $cewe = $this->db->get_where('alumni', ['jenis_kelamin' => 'Perempuan'])->num_rows();
+                    $cewe = $this->db->get_where('alumni', ['jns_kel' => 'Perempuan'])->num_rows();
                     echo $cewe;
                     ?>
                 ],
@@ -220,7 +142,7 @@
                     'rgb(255, 99, 132)'
                 ]
             }]
-        };
+        }
         var pieOptions = {
             maintainAspectRatio: false,
             responsive: true,
@@ -229,7 +151,7 @@
             type: 'pie',
             data: pieData,
             options: pieOptions
-        })
+        });
     });
 </script>
 </body>

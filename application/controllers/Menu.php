@@ -11,7 +11,7 @@ class Menu extends CI_Controller
     public function index()
     {
         $data['title'] = 'Menu Management';
-        $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['menu'] = $this->db->get('user_menu')->result_array();
         $this->form_validation->set_rules('menu', 'Menu', 'required');
         if ($this->form_validation->run() == FALSE) {
@@ -31,7 +31,7 @@ class Menu extends CI_Controller
     public function submenu()
     {
         $data['title'] = 'Submenu Management';
-        $data['user'] = $this->db->get_where('admin', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['submenu'] = $this->db->get('user_submenu')->result_array();
         $data['menu'] = $this->db->get('user_menu')->result_array();
         $this->form_validation->set_rules('submenu', 'Submenu', 'required');

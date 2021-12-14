@@ -13,7 +13,7 @@ class Auth extends CI_Controller
         if ($this->session->userdata('email')) {
             redirect('dashboard');
         }
-        $data['title'] = 'Log In | Admin Alumni SMKSA';
+        $data['title'] = 'Log In | MII Banyuurip 01';
 
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
@@ -31,7 +31,7 @@ class Auth extends CI_Controller
     {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
-        $user = $this->db->get_where('admin', ['email' => $email])->row_array();
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
         if ($user) {
             if (password_verify($password, $user['password'])) {
@@ -55,7 +55,7 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role');
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success">You have been Logged out!</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success">Anda telah berhasil logout!</div>');
         redirect('auth');
     }
 

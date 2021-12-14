@@ -5,11 +5,11 @@
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
+                    <div class="col-md-6">
                         <h1 class="m-0 text-dark">Menu Management</h1>
                     </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
+                    <div class="col-md-6">
+                        <ol class="breadcrumb float-md-right">
                             <li class="breadcrumb-item active"><a href="<?= base_url('menu') ?>">Menu Management</a></li>
                         </ol>
                     </div><!-- /.col -->
@@ -20,8 +20,9 @@
         <!-- Main content -->
         <section class="content">
             <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>" data-data="Menu"></div>
+            <?php $this->session->unset_userdata('message'); ?>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-md-6">
                     <a href="" class="btn btn-info mb-3 tambah" data-toggle="modal" data-target="#addModal">Add New Menu</a>
                     <table class="table table-hover">
                         <thead>

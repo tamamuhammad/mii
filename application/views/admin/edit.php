@@ -4,11 +4,11 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
+                <div class="col-md-6">
                     <h1 class="m-0 text-dark">Edit <?= $admin['nama'] ?></h1>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                <div class="col-md-6">
+                    <ol class="breadcrumb float-md-right">
                         <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>">Admin</a></li>
                         <li class="breadcrumb-item active"><a href="<?= base_url('admin/edit/' . $admin['id']) ?>">Edit <?= $admin['nama'] ?></a></li>
                     </ol>
@@ -19,7 +19,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <div class="col-sm-8">
+        <div class="col-md-8">
             <?= $this->session->flashdata('message'); ?>
             <?= form_open_multipart('admin/edit/' . $admin['id']); ?>
             <div class="form-group row">

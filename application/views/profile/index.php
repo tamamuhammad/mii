@@ -8,7 +8,7 @@
             <h5 class="widget-user-desc pb-5"><?= $role['role'] ?></h5>
         </div>
         <div class="widget-user-image" style="top: 175px; margin-left: -75px;">
-            <img class="img-circle elevation-2" src="<?= base_url('assets/img/') . $user['gambar'] ?>" alt="User Avatar" style="width: 150px!important">
+            <img class="img-circle elevation-2" src="<?= base_url('assets/img/') . $user['gambar'] ?>" alt="User Avatar" style="height: 150px; max-width: 150px; width: 150px; object-fit:cover">
         </div>
         <div class="cardfooter" style="margin-top: 150px;padding-right: 1.25rem;padding-bottom: 0.75rem;padding-left: 1.25rem;">
             <div class="row">

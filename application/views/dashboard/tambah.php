@@ -4,13 +4,14 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Tabel Data Alumni</h1>
+                <div class="col-md-6">
+                    <h1 class="m-0 text-dark">Tambah Data Alumni</h1>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                <div class="col-md-6">
+                    <ol class="breadcrumb float-md-right">
                         <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>">Dashboard</a></li>
-                        <li class="breadcrumb-item active"><a href="<?= base_url('dashboard/table') ?>">Table Data Alumni</a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('dashboard/table') ?>">Table Data Alumni</a></li>
+                        <li class="breadcrumb-item active"><a href="<?= base_url('dashboard/table') ?>">Tambah Data Alumni</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -19,7 +20,7 @@
     <!-- /.content-header -->
     <div class="container">
         <div class="row">
-            <div class="col-10">
+            <div class="col-md-10">
                 <div class="card card-info">
                     <div class="card-header">
                         <h3 class="card-title">Formulir Tambah Alumni</h3>
@@ -32,23 +33,50 @@
                                 <!-- text input -->
                                 <div class="form-group form-inline">
                                     <div class="col-sm-4">
-                                        <label for="nama">Nama</label>
+                                        <label for="nis">NIS</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control w-100" placeholder="Masukkan NIS" name="nis" id="nis">
+                                        <?= form_error('nis', '<small class="text-danger">', '</small>'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <div class="col-sm-4">
+                                        <label for="nama">Nama Lengkap</label>
                                     </div>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control w-100" placeholder="Masukkan Nama" name="nama" id="nama">
                                         <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
-                                <div class="form-group d-inline-flex custom-control custom-radio">
-                                    <div class="custom-control custom-radio mr-1">
-                                        <input class="custom-control-input" type="radio" id="laki" name="jeniskelamin" value="Laki-Laki">
-                                        <label for="laki" class="custom-control-label">Laki - Laki</label>
+                                <div class="form-group d-flex custom-control custom-radio pl-0 my-2">
+                                    <div class="col-sm-4">
+                                        <label for="jeniskelamin">Jenis Kelamin</label>
                                     </div>
-                                    <div class="custom-control custom-radio ml-1">
-                                        <input class="custom-control-input" type="radio" id="perempuan" name="jeniskelamin" value="Perempuan">
-                                        <label for="perempuan" class="custom-control-label">Perempuan</label>
+                                    <div class="col-sm-8 d-flex">
+                                        <div class="custom-control custom-radio mr-1">
+                                            <input class="custom-control-input" type="radio" id="laki" name="jeniskelamin" value="Laki-Laki">
+                                            <label for="laki" class="custom-control-label">Laki - Laki</label>
+                                        </div>
+                                        <div class="custom-control custom-radio ml-1">
+                                            <input class="custom-control-input" type="radio" id="perempuan" name="jeniskelamin" value="Perempuan">
+                                            <label for="perempuan" class="custom-control-label">Perempuan</label>
+                                        </div>
+                                        <?= form_error('jeniskelamin', '<small class="text-danger ml-5">', '</small>'); ?>
                                     </div>
-                                    <?= form_error('jeniskelamin', '<small class="text-danger">', '</small>'); ?>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <div class="col-sm-4">
+                                        <label for="ttl">TTL</label>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control w-100" placeholder="Masukkan Tempat Lahir" name="ttl" id="ttl">
+                                        <?= form_error('ttl', '<small class="text-danger">', '</small>'); ?>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="date" class="form-control w-100" placeholder="Masukkan Tanggal Lahir" name="tgl" id="tgl">
+                                        <?= form_error('tgl', '<small class="text-danger">', '</small>'); ?>
+                                    </div>
                                 </div>
                                 <div class="form-group form-inline">
                                     <div class="col-sm-4">
@@ -61,100 +89,45 @@
                                 </div>
                                 <div class="form-group form-inline">
                                     <div class="col-sm-4">
-                                        <label for="jurusan">Jurusan</label>
+                                        <label for="ayah">Nama Orangtua</label>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <select class="custom-select w-100" name="jurusan" id="jurusan">
-                                            <option value="Teknik Komputer dan Jaringan">Teknik Komputer dan Jaringan</option>
-                                            <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
-                                            <option value="Tata Busana">Tata Busana</option>
-                                            <option value="Teknik Kendaraan Ringan Otomotif">Teknik Kendaraan Ringan Otomotif</option>
-                                            <option value="Teknik Bisnis Sepeda Motor">Teknik Bisnis Sepeda Motor</option>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control w-100" placeholder="Masukkan Nama Ayah" name="ayah" id="ayah">
+                                        <?= form_error('ayah', '<small class="text-danger">', '</small>'); ?>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control w-100" placeholder="Masukkan Nama Ibu" name="ibu" id="ibu">
+                                        <?= form_error('ibu', '<small class="text-danger">', '</small>'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <div class="col-sm-4">
+                                        <label for="tahun">Tahun Masuk dan Lulus</label>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <select class="custom-select w-100" name="masuk" id="masuk" required>
+                                            <option value="" selected disabled>Pilih Tahun Masuk</option>
+                                            <?php for ($i = 2007; $i <= date('Y'); $i++) : ?>
+                                                <option value="<?= $i ?>"><?= $i ?></option>
+                                            <?php endfor; ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <select class="custom-select w-100" name="keluar" id="keluar" required>
+                                            <option value="" selected disabled>Pilih Tahun Lulus</option>
+                                            <?php for ($i = 2007; $i <= date('Y'); $i++) : ?>
+                                                <option value="<?= $i ?>"><?= $i ?></option>
+                                            <?php endfor; ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group form-inline">
                                     <div class="col-sm-4">
-                                        <label for="tahun">Tahun Lulus</label>
+                                        <label for="berkas">Link Berkas</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <select class="custom-select mx-1 float-right" name="tahun" id="tahun" style="width : 18%">
-                                            <option value="2015">2015</option>
-                                            <option value="2016">2016</option>
-                                            <option value="2017">2017</option>
-                                            <option value="2018">2018</option>
-                                            <option value="2019">2019</option>
-                                            <option value="2020">2020</option>
-                                            <option value="2021">2021</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group form-inline">
-                                    <div class="col-sm-4">
-                                        <label for="telp">No Telp.</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control w-100" placeholder="Masukkan No. Telp" name="telp" id="telp">
-                                        <?= form_error('telp', '<small class="text-danger">', '</small>'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group form-inline">
-                                    <div class="col-sm-4">
-                                        <label for="sosmed">Sosial Media</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control w-100" placeholder="Masukkan salah satu akun sosmed" name="sosmed" id="sosmed">
-                                    </div>
-                                </div>
-                                <div class="form-group form-inline">
-                                    <div class="col-sm-4">
-                                        <label for="status">Status</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <select class="custom-select w-100" name="status" id="status">
-                                            <option value="Belum Kerja">Belum Kerja</option>
-                                            <option value="Bekerja">Bekerja</option>
-                                            <option value="Kuliah">Kuliah</option>
-                                            <option value="Wirausaha">Wirausaha</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group form-inline">
-                                    <div class="col-sm-4">
-                                        <label for="industri">Industri</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control w-100" placeholder="Masukkan industri" name="industri" id="industri">
-                                    </div>
-                                </div>
-                                <div class="form-group form-inline">
-                                    <div class="col-sm-4">
-                                        <label for="gambar" class="col-form-label">Gambar</label>
-                                    </div>
-                                    <div class="col-sm-8 px-3">
-                                        <div class="row">
-                                            <div class="custom-file w-75 mr-auto mt-4">
-                                                <input type="file" class="custom-file-input" id="gambar" name="gambar">
-                                                <label class="custom-file-label" for="gambar">Choose file</label>
-                                            </div>
-                                            <img src="<?= base_url('assets/img/default.jpg') ?>" width="90px" style="border-radius: 5px">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group form-inline">
-                                    <div class="col-sm-4">
-                                        <label for="rating">Rating SMKSA</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control w-100" placeholder="Masukkan rating" name="rating" id="rating">
-                                    </div>
-                                </div>
-                                <div class="form-group form-inline">
-                                    <div class="col-sm-4">
-                                        <label for="saran">Saran SMKSA</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control w-100" placeholder="Masukkan saran" name="saran" id="saran">
+                                        <textarea class="form-control w-100" rows="2" placeholder="Masukkan link berkas" name="berkas" id="berkas"></textarea>
+                                        <?= form_error('berkas', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">

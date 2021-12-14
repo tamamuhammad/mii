@@ -18,6 +18,7 @@
     <!-- /.content-header -->
     <div class="container">
         <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>" data-data="Petugas"></div>
+        <?php $this->session->unset_userdata('message'); ?>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -47,7 +48,7 @@
                                         <td><?= $p['email'] ?></td>
                                         <?php $role = $this->db->get_where('user_role', ['id' => $p['role']])->row_array(); ?>
                                         <td><?= $role['role'] ?></td>
-                                        <td><img src="<?= base_url('assets/img/') . $p['gambar'] ?>" width="100px"></td>
+                                        <td><img src="<?= base_url('assets/img/') . $p['gambar'] ?>" style="height: 100px!important; max-width: 100px!important; width: 100px!important; object-fit:cover"></td>
                                         <td>
                                             <?php
                                             if ($this->session->userdata('email') == $p['email']) {

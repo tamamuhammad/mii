@@ -3,6 +3,7 @@
         <a href="<?= base_url('auth') ?>">Login <b>Petugas</b></a>
     </div>
     <?= $this->session->flashdata('message'); ?>
+    <?php $this->session->unset_userdata('message'); ?>
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">

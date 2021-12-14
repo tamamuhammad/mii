@@ -4,13 +4,14 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Edit Data <?= $alumni['nama_alumni'] ?></h1>
+                <div class="col-md-6">
+                    <h1 class="m-0 text-dark">Edit Data <?= $alumni['nama'] ?></h1>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                <div class="col-md-6">
+                    <ol class="breadcrumb float-md-right">
                         <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>">Dashboard</a></li>
-                        <li class="breadcrumb-item active"><a href="<?= base_url('dashboard/table') ?>">Table Data Alumni</a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('dashboard/table') ?>">Table Data Alumni</a></li>
+                        <li class="breadcrumb-item active"><a href="<?= base_url('dashboard/edit') ?>">Edit Data Alumni</a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -19,7 +20,7 @@
     <!-- /.content-header -->
     <div class="container">
         <div class="row">
-            <div class="col-10">
+            <div class="col-md-10">
                 <div class="card card-info">
                     <div class="card-header">
                         <h3 class="card-title">Formulir Edit Alumni</h3>
@@ -30,24 +31,51 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <!-- text input -->
-                                <input type="hidden" name="id" id="id" value="<?= $alumni['id'] ?>">
                                 <div class="form-group form-inline">
                                     <div class="col-sm-4">
-                                        <label for="nama">Nama</label>
+                                        <label for="nis">NIS</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control w-100" placeholder="Masukkan Nama" name="nama" id="nama" value="<?= $alumni['nama_alumni'] ?>">
+                                        <input type="text" class="form-control w-100" value="<?= $alumni['nis'] ?>" name="nis" id="nis">
+                                        <?= form_error('nis', '<small class="text-danger">', '</small>'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <div class="col-sm-4">
+                                        <label for="nama">Nama Lengkap</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control w-100" value="<?= $alumni['nama'] ?>" name="nama" id="nama">
                                         <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
-                                <div class="form-group d-inline-flex custom-control custom-radio">
-                                    <div class="custom-control custom-radio mr-1">
-                                        <input class="custom-control-input" type="radio" id="laki" name="jeniskelamin" value="Laki-Laki" <?= ($alumni['jenis_kelamin'] == 'Laki-Laki' ? ' checked' : '') ?>>
-                                        <label for="laki" class="custom-control-label">Laki - Laki</label>
+                                <div class="form-group d-flex custom-control custom-radio pl-0 my-2">
+                                    <div class="col-sm-4">
+                                        <label for="jeniskelamin">Jenis Kelamin</label>
                                     </div>
-                                    <div class="custom-control custom-radio ml-1">
-                                        <input class="custom-control-input" type="radio" id="perempuan" name="jeniskelamin" value="Perempuan" <?= ($alumni['jenis_kelamin'] == 'Perempuan' ? ' checked' : '') ?>>
-                                        <label for="perempuan" class="custom-control-label">Perempuan</label>
+                                    <div class="col-sm-8 d-flex">
+                                        <div class="custom-control custom-radio mr-1">
+                                            <input class="custom-control-input" type="radio" id="laki" name="jeniskelamin" value="Laki-Laki" <?= ($alumni['jns_kel'] == 'Laki-Laki' ? ' checked' : '') ?>>
+                                            <label for="laki" class="custom-control-label">Laki - Laki</label>
+                                        </div>
+                                        <div class="custom-control custom-radio ml-1">
+                                            <input class="custom-control-input" type="radio" id="perempuan" name="jeniskelamin" value="Perempuan" <?= ($alumni['jns_kel'] == 'Perempuan' ? ' checked' : '') ?>>
+                                            <label for="perempuan" class="custom-control-label">Perempuan</label>
+                                        </div>
+                                        <?= form_error('jeniskelamin', '<small class="text-danger ml-5">', '</small>'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <div class="col-sm-4">
+                                        <label for="ttl">TTL</label>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control w-100" value="<?= $alumni['tempat_lahir'] ?>" name="ttl" id="ttl">
+                                        <?= form_error('ttl', '<small class="text-danger">', '</small>'); ?>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="date" class="form-control w-100" value="<?= $alumni['tgl_lahir'] ?>" name="tgl" id="tgl">
+                                        <?= form_error('tgl', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group form-inline">
@@ -55,110 +83,55 @@
                                         <label for="alamat">Alamat</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <textarea class="form-control w-100" rows="3" name="alamat" id="alamat"><?= $alumni['alamat'] ?></textarea>
+                                        <textarea class="form-control w-100" rows="3" placeholder="Masukkan Alamat" name="alamat" id="alamat"><?= $alumni['alamat'] ?></textarea>
                                         <?= form_error('alamat', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group form-inline">
                                     <div class="col-sm-4">
-                                        <label for="jurusan">Jurusan</label>
+                                        <label for="ayah">Nama Orangtua</label>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <select class="custom-select w-100" name="jurusan" id="jurusan" value="<?= $alumni['jurusan'] ?>">
-                                            <option value="Teknik Komputer dan Jaringan" <?= ($alumni['jurusan'] == 'Teknik Komputer dan Jaringan' ? ' selected' : '') ?>>Teknik Komputer dan Jaringan</option>
-                                            <option value="Rekayasa Perangkat Lunak" <?= ($alumni['jurusan'] == 'Rekayasa Perangkat Lunak' ? ' selected' : '') ?>>Rekayasa Perangkat Lunak</option>
-                                            <option value="Tata Busana" <?= ($alumni['jurusan'] == 'Tata Busana' ? ' selected' : '') ?>>Tata Busana</option>
-                                            <option value="Teknik Kendaraan Ringan Otomotif" <?= ($alumni['jurusan'] == 'Teknik Kendaraan Ringan Otomotif' ? ' selected' : '') ?>>Teknik Kendaraan Ringan Otomotif</option>
-                                            <option value="Teknik Bisnis Sepeda Motor" <?= ($alumni['jurusan'] == 'Teknik Bisnis Sepeda Motor' ? ' selected' : '') ?>>Teknik Bisnis Sepeda Motor</option>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control w-100" value="<?= $alumni['nama_ayah'] ?>" name="ayah" id="ayah">
+                                        <?= form_error('ayah', '<small class="text-danger">', '</small>'); ?>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control w-100" value="<?= $alumni['nama_ibu'] ?>" name="ibu" id="ibu">
+                                        <?= form_error('ibu', '<small class="text-danger">', '</small>'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <div class="col-sm-4">
+                                        <label for="tahun">Tahun Masuk dan Lulus</label>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <select class="custom-select w-100" name="masuk" id="masuk" required>
+                                            <option value="" selected disabled>Pilih Tahun Masuk</option>
+                                            <?php for ($i = 2007; $i <= date('Y'); $i++) : ?>
+                                                <option value="<?= $i ?>" <?= ($alumni['tahun_masuk'] == $i ? ' selected' : '') ?>><?= $i ?></option>
+                                            <?php endfor; ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <select class="custom-select w-100" name="keluar" id="keluar" required>
+                                            <option value="" selected disabled>Pilih Tahun Lulus</option>
+                                            <?php for ($i = 2007; $i <= date('Y'); $i++) : ?>
+                                                <option value="<?= $i ?>" <?= ($alumni['tahun_keluar'] == $i ? ' selected' : '') ?>><?= $i ?></option>
+                                            <?php endfor; ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group form-inline">
                                     <div class="col-sm-4">
-                                        <label for="tahun">Tahun Lulus</label>
+                                        <label for="berkas">Link Berkas</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <select class="custom-select mx-1 float-right w-100" name="tahun" id="tahun">
-                                            <option value="2015" <?= ($alumni['tahun_lulus'] == '2015' ? ' selected' : '') ?>>2015</option>
-                                            <option value="2016" <?= ($alumni['tahun_lulus'] == '2016' ? ' selected' : '') ?>>2016</option>
-                                            <option value="2017" <?= ($alumni['tahun_lulus'] == '2017' ? ' selected' : '') ?>>2017</option>
-                                            <option value="2018" <?= ($alumni['tahun_lulus'] == '2018' ? ' selected' : '') ?>>2018</option>
-                                            <option value="2019" <?= ($alumni['tahun_lulus'] == '2019' ? ' selected' : '') ?>>2019</option>
-                                            <option value="2020" <?= ($alumni['tahun_lulus'] == '2020' ? ' selected' : '') ?>>2020</option>
-                                            <option value="2021" <?= ($alumni['tahun_lulus'] == '2021' ? ' selected' : '') ?>>2021</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group form-inline">
-                                    <div class="col-sm-4">
-                                        <label for="telp">No Telp.</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control w-100" placeholder="Masukkan No. Telp" name="telp" id="telp" value="<?= $alumni['no_telp'] ?>">
-                                        <?= form_error('telp', '<small class="text-danger">', '</small>'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group form-inline">
-                                    <div class="col-sm-4">
-                                        <label for="sosmed">Sosial Media</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control w-100" placeholder="Masukkan salah satu akun sosmed" name="sosmed" id="sosmed" value="<?= $alumni['sosmed'] ?>">
-                                    </div>
-                                </div>
-                                <div class="form-group form-inline">
-                                    <div class="col-sm-4">
-                                        <label for="status">Status</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <select class="custom-select mx-1 float-right w-100" name="status" id="status">
-                                            <option value="Belum Kerja" <?= ($alumni['keg_set_lulus'] == 'Belum Kerja' ? ' selected' : '') ?>>Belum Kerja</option>
-                                            <option value="Bekerja" <?= ($alumni['keg_set_lulus'] == 'Bekerja' ? ' selected' : '') ?>>Bekerja</option>
-                                            <option value="Kuliah" <?= ($alumni['keg_set_lulus'] == 'Kuliah' ? ' selected' : '') ?>>Kuliah</option>
-                                            <option value="Wirausaha" <?= ($alumni['keg_set_lulus'] == 'Wirausaha' ? ' selected' : '') ?>>Wirausaha</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group form-inline">
-                                    <div class="col-sm-4">
-                                        <label for="industri">Industri</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control w-100" placeholder="Masukkan industri" name="industri" id="industri" value="<?= $alumni['nama_industry'] ?>">
-                                    </div>
-                                </div>
-                                <div class="form-group form-inline">
-                                    <div class="col-sm-4">
-                                        <label for="gambar" class="col-form-label">Gambar</label>
-                                    </div>
-                                    <div class="col-sm-8 px-3">
-                                        <div class="row">
-                                            <div class="custom-file w-75 mr-auto mt-4">
-                                                <input type="file" class="custom-file-input" id="gambar" name="gambar" value="<?= $alumni['upload_foto'] ?>">
-                                                <label class="custom-file-label" for="gambar">Choose file</label>
-                                            </div>
-                                            <img src="<?= base_url('assets/img/') . $alumni['upload_foto'] ?>" width="90px" style="border-radius: 5px">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group form-inline">
-                                    <div class="col-sm-4">
-                                        <label for="rating">Rating SMKSA</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control w-100" placeholder="Masukkan rating" name="rating" id="rating" value="<?= $alumni['rating_smksa'] ?>">
-                                    </div>
-                                </div>
-                                <div class="form-group form-inline">
-                                    <div class="col-sm-4">
-                                        <label for="saran">Saran SMKSA</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control w-100" placeholder="Masukkan saran" name="saran" id="saran" value="<?= $alumni['saran_smksa'] ?>">
+                                        <textarea class="form-control w-100" rows="2" name="berkas" id="berkas"><?= $alumni['link_berkas'] ?></textarea>
+                                        <?= form_error('berkas', '<small class="text-danger">', '</small>'); ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-info float-right mx-1" type="submit">Edit</button>
+                                    <button class="btn btn-info float-right mx-1" type="submit">Tambah</button>
                                     <a class="btn btn-secondary float-right mx-1" href="<?= base_url('dashboard/table') ?>">Kembali</a>
                                 </div>
                             </div>

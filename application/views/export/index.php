@@ -9,7 +9,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item active"><a href="<?= base_url('Rxport') ?>">Report</a></li>
+                            <li class="breadcrumb-item active"><a href="<?= base_url('report') ?>">Report</a></li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -20,27 +20,21 @@
             <section class="filter">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-10">
                             <div class="card">
                                 <div class="card-header">
-                                    <label class="mr-2">Filter Berdasarkan :</label>
-                                    <select class="custom-select w-50 mx-1" name="jurusan" id="jurusan">
-                                        <option value="" selected>Pilih Jurusan</option>
-                                        <option value="Teknik Komputer dan Jaringan">Teknik Komputer dan Jaringan</option>
-                                        <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
-                                        <option value="Tata Busana">Tata Busana</option>
-                                        <option value="Teknik Kendaraan Ringan Otomotif">Teknik Kendaraan Ringan Otomotif</option>
-                                        <option value="Teknik Bisnis Sepeda Motor">Teknik Bisnis Sepeda Motor</option>
+                                    <label class="mr-1">Filter Berdasarkan :</label>
+                                    <select class="custom-select w-25 mr-1" name="masuk" id="masuk">
+                                        <option value="" selected>Pilih Tahun Masuk</option>
+                                        <?php for ($i = 2007; $i <= date('Y'); $i++) : ?>
+                                            <option value="<?= $i ?>"><?= $i ?></option>
+                                        <?php endfor; ?>
                                     </select>
-                                    <select class="custom-select w-25 mx-1" name="tahun" id="tahun">
-                                        <option value="" selected>Pilih Tahun Kelulusan</option>
-                                        <option value="2015">2015</option>
-                                        <option value="2016">2016</option>
-                                        <option value="2017">2017</option>
-                                        <option value="2018">2018</option>
-                                        <option value="2019">2019</option>
-                                        <option value="2020">2020</option>
-                                        <option value="2021">2021</option>
+                                    <select class="custom-select w-25 ml-1" name="keluar" id="keluar">
+                                        <option value="" selected>Pilih Tahun Lulus</option>
+                                        <?php for ($i = 2007; $i <= date('Y'); $i++) : ?>
+                                            <option value="<?= $i ?>"><?= $i ?></option>
+                                        <?php endfor; ?>
                                     </select>
                                 </div>
                             </div>
